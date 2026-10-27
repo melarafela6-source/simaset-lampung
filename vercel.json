@@ -3,12 +3,6 @@
   "name": "simaset-pemprov-lampung",
   "cleanUrls": true,
   "trailingSlash": false,
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -29,4 +23,3 @@
     }
   ]
 }
-
