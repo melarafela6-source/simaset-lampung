@@ -43,37 +43,56 @@ document.addEventListener("DOMContentLoaded", () => {
 // Load data from LocalStorage or fallback to INITIAL_ASET_DATA
 function loadData() {
   try {
-    const saved = localStorage.getItem("lampung_aset_data_v1");
+    const saved = localStorage.getItem("lampung_aset_data_v2");
     if (saved) {
-      AppState.asetList = JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        AppState.asetList = parsed;
+      } else {
+        AppState.asetList = (typeof INITIAL_ASET_DATA !== "undefined" && Array.isArray(INITIAL_ASET_DATA)) ? [...INITIAL_ASET_DATA] : [];
+        saveData();
+      }
     } else {
-      AppState.asetList = [...INITIAL_ASET_DATA];
+      AppState.asetList = (typeof INITIAL_ASET_DATA !== "undefined" && Array.isArray(INITIAL_ASET_DATA)) ? [...INITIAL_ASET_DATA] : [];
       saveData();
     }
   } catch (e) {
     console.error("Error loading local storage data:", e);
-    AppState.asetList = [...INITIAL_ASET_DATA];
+    AppState.asetList = (typeof INITIAL_ASET_DATA !== "undefined" && Array.isArray(INITIAL_ASET_DATA)) ? [...INITIAL_ASET_DATA] : [];
   }
+
+  // Safety check: if list is still empty, force populate from INITIAL_ASET_DATA
+  if (!AppState.asetList || AppState.asetList.length === 0) {
+    if (typeof INITIAL_ASET_DATA !== "undefined" && Array.isArray(INITIAL_ASET_DATA)) {
+      AppState.asetList = [...INITIAL_ASET_DATA];
+      saveData();
+    }
+  }
+
   applyFilters();
 }
 
 function saveData() {
   try {
-    localStorage.setItem("lampung_aset_data_v1", JSON.stringify(AppState.asetList));
+    localStorage.setItem("lampung_aset_data_v2", JSON.stringify(AppState.asetList));
   } catch (e) {
     console.error("Error saving data:", e);
   }
 }
 
+function forcePopulateDummyData() {
+  AppState.asetList = (typeof INITIAL_ASET_DATA !== "undefined" && Array.isArray(INITIAL_ASET_DATA)) ? [...INITIAL_ASET_DATA] : [];
+  saveData();
+  applyFilters();
+  updateMetrics();
+  updateCharts();
+  refreshMapMarkers();
+  showToast("Dataset dummy 43+ Aset BMD Pemprov Lampung berhasil dimuat!", "success");
+}
+
 function resetToDefaultData() {
-  if (confirm("Apakah Anda yakin ingin mereset seluruh data aset kembali ke dataset default BPKAD Pemprov Lampung? Semua perubahan data yang belum di-backup akan dihapus.")) {
-    AppState.asetList = [...INITIAL_ASET_DATA];
-    saveData();
-    applyFilters();
-    updateMetrics();
-    updateCharts();
-    refreshMapMarkers();
-    showToast("Data aset berhasil direset ke dataset awal BPKAD!", "success");
+  if (confirm("Apakah Anda yakin ingin mengisi ulang seluruh data aset dengan dataset dummy lengkap Pemprov Lampung?")) {
+    forcePopulateDummyData();
   }
 }
 
