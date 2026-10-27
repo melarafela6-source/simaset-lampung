@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 130" width="120" height="130">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="50%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#991B1B" />
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Perisai Segilima -->
+  <polygon points="60,6 112,24 98,102 60,124 22,102 8,24" fill="url(#shieldGrad)" stroke="url(#goldGrad)" stroke-width="3" filter="url(#dropShadow)" />
+
+  <!-- Garis Tepi Dalam -->
+  <polygon points="60,11 106,27 94,98 60,118 26,98 14,27" fill="none" stroke="#FDE047" stroke-width="1" stroke-dasharray="2,2" opacity="0.6"/>
+
+  <!-- Latar Merah Atas Siger -->
+  <path d="M 22,46 Q 60,56 98,46 L 98,24 Q 60,14 22,24 Z" fill="url(#redGrad)" opacity="0.9"/>
+
+  <!-- Mahkota Siger Lampung (Khas 9 Lekuk) -->
+  <g id="siger" transform="translate(15, 30)">
+    <!-- Base Siger Crown -->
+    <path d="M 5,42 Q 45,46 85,42 C 87,30 82,18 78,8 C 75,18 71,20 67,12 C 63,22 59,20 55,5 C 51,18 47,20 45,2 C 43,20 39,18 35,5 C 31,20 27,22 23,12 C 19,20 15,18 12,8 C 8,18 3,30 5,42 Z"
+          fill="url(#goldGrad)" stroke="#78350F" stroke-width="1.2" filter="url(#dropShadow)"/>
+
+    <!-- Lekukan & Detail Intan Permata Siger -->
+    <circle cx="45" cy="12" r="3" fill="#DC2626" stroke="#FEF08A" stroke-width="0.8"/>
+    <circle cx="35" cy="18" r="2.2" fill="#2563EB" stroke="#FEF08A" stroke-width="0.6"/>
+    <circle cx="55" cy="18" r="2.2" fill="#2563EB" stroke="#FEF08A" stroke-width="0.6"/>
+    <circle cx="25" cy="22" r="2" fill="#16A34A" stroke="#FEF08A" stroke-width="0.6"/>
+    <circle cx="65" cy="22" r="2" fill="#16A34A" stroke="#FEF08A" stroke-width="0.6"/>
+    <circle cx="15" cy="26" r="1.8" fill="#DC2626" stroke="#FEF08A" stroke-width="0.6"/>
+    <circle cx="75" cy="26" r="1.8" fill="#DC2626" stroke="#FEF08A" stroke-width="0.6"/>
+
+    <!-- Ornamen Tapak Siger -->
+    <path d="M 8,42 Q 45,47 82,42 L 80,46 Q 45,51 10,46 Z" fill="#B45309" stroke="#FEF08A" stroke-width="0.6"/>
+  </g>
+
+  <!-- Payung Agung / Payung Jurai & Keris/Tombak Khas Lampung -->
+  <g transform="translate(60, 84)">
+    <!-- Gong Emas -->
+    <circle cx="0" cy="5" r="16" fill="url(#goldGrad)" stroke="#78350F" stroke-width="1.5"/>
+    <circle cx="0" cy="5" r="9" fill="#B45309" opacity="0.6"/>
+    <circle cx="0" cy="5" r="4" fill="#FEF08A"/>
+
+    <!-- Parang Payan Tombak Bersilang -->
+    <line x1="-18" y1="-12" x2="18" y2="20" stroke="#FEF08A" stroke-width="2" stroke-linecap="round"/>
+    <line x1="18" y1="-12" x2="-18" y2="20" stroke="#FEF08A" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Bintang Ketuhanan di Atas -->
+  <polygon points="60,14 62,19 67,19 63,22 65,27 60,24 55,27 57,22 53,19 58,19" fill="#FEF08A" stroke="#B45309" stroke-width="0.5"/>
+
+  <!-- Pita Semboyan: Sang Bumi Ruwa Jurai -->
+  <g transform="translate(60, 114)">
+    <path d="M -42,-4 Q 0,-8 42,-4 L 38,5 Q 0,2 -38,5 Z" fill="#FEF08A" stroke="#B45309" stroke-width="1"/>
+    <text x="0" y="2" font-family="'Segoe UI', Roboto, Arial, sans-serif" font-size="5" font-weight="900" fill="#78350F" text-anchor="middle" letter-spacing="0.5">SANG BUMI RUWA JURAI</text>
+  </g>
+</svg>
+
