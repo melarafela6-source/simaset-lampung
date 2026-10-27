@@ -1,0 +1,21 @@
+{
+  "name": "simaset-pemprov-lampung",
+  "version": "1.0.0",
+  "description": "Portal Informasi dan Dashboard Aset Daerah (BMD) Pemerintah Provinsi Lampung - BPKAD",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "simaset",
+    "lampung",
+    "bpkad",
+    "aset-daerah",
+    "bmd",
+    "dashboard"
+  ],
+  "author": "BPKAD Pemerintah Provinsi Lampung",
+  "license": "MIT"
+}
+
