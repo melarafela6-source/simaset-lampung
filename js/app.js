@@ -29,16 +29,36 @@ const AppState = {
 // ==========================================================================
 // INITIALIZATION
 // ==========================================================================
-document.addEventListener("DOMContentLoaded", () => {
-  initTheme();
-  loadData();
-  populateDropdowns();
-  setupEventListeners();
-  renderCurrentView();
-  updateMetrics();
-  initCharts();
-  initMap();
-});
+function initApp() {
+  try {
+    initTheme();
+    loadData();
+    populateDropdowns();
+    setupEventListeners();
+    renderCurrentView();
+    updateMetrics();
+    initCharts();
+    initMap();
+  } catch (err) {
+    console.error("Error during initApp:", err);
+  }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initApp);
+} else {
+  // DOM already loaded!
+  initApp();
+}
+
+// Additional failsafe timer to ensure UI renders
+setTimeout(() => {
+  const totalNilaiEl = document.getElementById("metricTotalNilai");
+  if (!totalNilaiEl || totalNilaiEl.textContent === "Rp 0" || !AppState.asetList || AppState.asetList.length === 0) {
+    console.warn("Failsafe: re-running initApp...");
+    initApp();
+  }
+}, 300);
 
 // Load data from LocalStorage or fallback to INITIAL_ASET_DATA
 function loadData() {
