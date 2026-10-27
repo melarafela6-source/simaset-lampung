@@ -1142,3 +1142,11 @@ function formatAngka(angka) {
   if (angka === null || angka === undefined || isNaN(angka)) return "0";
   return new Intl.NumberFormat("id-ID").format(angka);
 }
+
+// Global window attachments
+if (typeof window !== "undefined") {
+  window.KABUPATEN_KOTA_LAMPUNG = KABUPATEN_KOTA_LAMPUNG;
+  window.OPD_LIST = OPD_LIST;
+  window.KIB_CATEGORIES = KIB_CATEGORIES;
+  window.INITIAL_ASET_DATA = INITIAL_ASET_DATA;
+}
