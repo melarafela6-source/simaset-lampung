@@ -1,0 +1,203 @@
+/* ==========================================================================
+   STYLE CSS - SIMASET PROVINSI LAMPUNG
+   Badan Pengelolaan Keuangan dan Aset Daerah (BPKAD) Pemprov Lampung
+   ========================================================================== */
+
+:root {
+  --lampung-maroon: #881337;
+  --lampung-maroon-dark: #4c0519;
+  --lampung-gold: #f59e0b;
+  --lampung-gold-dark: #b45309;
+  --lampung-navy: #0f172a;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Siger Motif Pattern Overlay */
+.siger-pattern {
+  background-image: radial-gradient(#d97706 0.75px, transparent 0.75px), radial-gradient(#d97706 0.75px, #881337 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  opacity: 0.95;
+}
+
+/* Leaflet Map Customization */
+#mapAset {
+  height: 520px;
+  width: 100%;
+  border-radius: 0.75rem;
+  z-index: 10;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+  padding: 0;
+  overflow: hidden;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  line-height: 1.4;
+  font-family: inherit;
+}
+
+/* Pulse animation for idle / attention assets */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.badge-pulse {
+  animation: pulse-ring 2s infinite;
+}
+
+/* Custom Marker Styles */
+.custom-div-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  border: 2px solid white;
+}
+
+/* Modal animation */
+.modal-overlay {
+  transition: opacity 0.25s ease;
+}
+.modal-container {
+  transition: transform 0.25s ease;
+}
+
+/* Label Cetak QR Inventaris */
+.label-aset-print {
+  width: 90mm;
+  height: 55mm;
+  border: 2px solid #881337;
+  padding: 8px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  color: #111;
+  position: relative;
+  page-break-inside: avoid;
+}
+
+.label-aset-print .header-kop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 2px solid #881337;
+  padding-bottom: 4px;
+}
+
+.label-aset-print .header-kop img {
+  width: 32px;
+  height: 36px;
+}
+
+.label-aset-print .header-kop .instansi {
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #881337;
+}
+
+.label-aset-print .header-kop .title {
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: #1e293b;
+}
+
+.label-aset-print .body-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.label-aset-print .qr-box {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border: 1px solid #cbd5e1;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label-aset-print .info-list {
+  font-size: 8px;
+  line-height: 1.3;
+}
+
+.label-aset-print .info-list td {
+  padding: 1px 2px;
+  vertical-align: top;
+}
+
+.label-aset-print .footer-label {
+  border-top: 1px dashed #94a3b8;
+  padding-top: 2px;
+  font-size: 7px;
+  display: flex;
+  justify-content: space-between;
+  color: #64748b;
+}
+
+/* Print Rules */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printSection, #printSection * {
+    visibility: visible;
+  }
+  #printSection {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 10mm;
+    background: white;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
